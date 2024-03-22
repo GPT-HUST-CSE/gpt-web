@@ -1,6 +1,6 @@
 <template>
-  <div class="app">
-    <router-view></router-view>
+  <div class="content">
+    
   </div>
 </template>
 
@@ -9,7 +9,9 @@
 </script>
 
 <style lang="less" scoped>
-.app {
-  height: 100%;
+
+.content {
+    width: calc(100% - var(--sidebar-width));
 }
+
 </style>

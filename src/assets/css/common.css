@@ -5,6 +5,7 @@
     --gray: #fafafa;
     --primary: #1d93ab;
     --second: #e7f8ff;
+    --light: #a6a6a6;
     --hover-color: #f3f3f3;
     --bar-color: rgba(0, 0, 0, .1);
     --theme-color: var(--gray);
@@ -16,5 +17,38 @@
     --sidebar-width: 300px;
     --window-content-width: calc(100% - var(--sidebar-width));
     --message-max-width: 80%;
-    --full-height: 100%
+    --full-height: 100%;
+    --sidebar-button-distance: 10px
+}
+
+.button-icon {
+    overflow: hidden;
+    color: var(--black);
+    background-color: var(--white);
+    box-shadow: var(--card-shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+
+    cursor: pointer;
+    user-select: none;
+    transition: all .3s ease;
+}
+
+.button-icon:hover {
+    background-color: var(--hover-color);
+    filter: brightness(90%)
+}
+
+.sidebar-config-button {
+    box-sizing: border-box;
+    flex-basis: calc(50% - var(--sidebar-button-distance) / 2);
+}
+
+.sidebar-config-button:nth-child(2n+1) {
+    margin-right: var(--sidebar-button-distance);
 }

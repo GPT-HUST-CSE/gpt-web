@@ -8,8 +8,9 @@
 </template>
 
 <script setup>
-import HomeContent from '@/components/home-content.vue'
-import HomeSidebar from '@/components/home-sidebar.vue'
+import HomeContent from './content/home-content.vue'
+import HomeSidebar from './sidebar/home-sidebar.vue'
+
 
 </script>
 

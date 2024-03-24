@@ -9,7 +9,10 @@ const useConversationStore = defineStore("conversation", {
         maxId: 1
     }),
     getters: {
-
+        currentConversation(state) {
+            let index = state.conversations.findIndex(item => item.id === state.currentIndex)
+            return state.conversations[index]
+        }
     },
     actions: {
         addConversation(data: object) {

@@ -52,3 +52,9 @@
 .sidebar-config-button:nth-child(2n+1) {
     margin-right: var(--sidebar-button-distance);
 }
+
+.one-line-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

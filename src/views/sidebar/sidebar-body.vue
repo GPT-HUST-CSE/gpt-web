@@ -1,9 +1,11 @@
 <template>
     <div class="sidebar-body">
-        <template v-for="conversation in conversations" :key="conversation.id">
-            <conversation-item :conversation="conversation" @click="change(conversation.id)"
-                :class="{ active: currentIndex === conversation.id }" />
-        </template>
+        <transition-group name="chat">
+            <template v-for="conversation in conversations" :key="conversation.id">
+                <conversation-item :conversation="conversation" @click="change(conversation.id)"
+                                    :class="{ active: currentIndex === conversation.id }" />
+            </template>
+        </transition-group>
     </div>
 </template>
 
@@ -48,4 +50,34 @@ const change = (index) => {
         background: transparent;
     }
 }
+
+.chat-enter-from,
+.chat-leave-to {
+    opacity: 0;
+}
+
+.chat-leave-to {
+    transform: translateX(-100%);
+}
+
+.chat-enter-to,
+.chat-leave-from {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.chat-enter-active,
+.chat-leave-active {
+    transition: all 1s ease;
+}
+
+.chat-leave-active {
+  position: absolute;
+}
+
+.chat-move {
+  transition: all 1s ease;
+}
+
+
 </style>

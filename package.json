@@ -9,6 +9,7 @@
   "dependencies": {
     "core-js": "^3.8.3",
     "dayjs": "^1.11.10",
+    "element-plus": "^2.6.2",
     "pinia": "^2.1.7",
     "register-service-worker": "^1.7.2",
     "vue": "^3.2.13",
@@ -24,7 +25,10 @@
     "@vue/cli-service": "~5.0.0",
     "less": "^4.0.0",
     "less-loader": "^8.0.0",
-    "typescript": "~4.5.5"
+    "typescript": "~4.5.5",
+    "unplugin-auto-import": "^0.17.5",
+    "unplugin-element-plus": "^0.8.0",
+    "unplugin-vue-components": "^0.26.0"
   },
   "browserslist": [
     "> 1%",

@@ -4,6 +4,7 @@
         <sidebar-config />
         <sidebar-body />
         <sidebar-tail />
+        <sidebar-drag />
     </div>
 </template>
 
@@ -13,6 +14,7 @@ import sidebarHeader from './sidebar-header.vue';
 import sidebarConfig from './sidebar-config.vue';
 import sidebarBody from './sidebar-body.vue';
 import sidebarTail from './sidebar-tail.vue';
+import SidebarDrag from './sidebar-drag.vue';
 
 </script>
 

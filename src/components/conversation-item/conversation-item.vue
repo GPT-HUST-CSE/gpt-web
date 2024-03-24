@@ -40,8 +40,6 @@ const deleteConversation = (id, event) => {
 
 <style lang="less" scoped>
 .conversation-item {
-    cursor: grab;
-
     display: block;
     padding: 10px 14px;
     margin-bottom: 10px;

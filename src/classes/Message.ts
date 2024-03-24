@@ -1,11 +1,13 @@
 export default class Message {
     sender: string;
     content: string;
+    time: Date;
 
     // 构造函数
-    constructor(sender: string, content: string) {
+    constructor(sender: string, content: string, time: Date) {
         this.sender = sender;
         this.content = content;
+        this.time = time;
     }
 
     // 方法

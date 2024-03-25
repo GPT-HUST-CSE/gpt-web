@@ -11,6 +11,8 @@ declare module 'vue' {
     AddConversation: typeof import('./src/components/sidebar-tail/add-conversation.vue')['default']
     ConversationItem: typeof import('./src/components/conversation-item/conversation-item.vue')['default']
     Mask: typeof import('./src/components/gpt-mask/mask.vue')['default']
+    MessageRobot: typeof import('./src/components/chat-message/message-robot.vue')['default']
+    MessageUser: typeof import('./src/components/chat-message/message-user.vue')['default']
     Plugins: typeof import('./src/components/gpt-plugins/plugins.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

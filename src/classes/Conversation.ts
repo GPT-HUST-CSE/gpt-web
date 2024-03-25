@@ -18,4 +18,8 @@ export default class Conversation {
     getMessageLength() {
         return this.messages.length
     }
+
+    addMessage(msg: Message) {
+        this.messages.push(msg)
+    }
 }

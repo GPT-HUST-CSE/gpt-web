@@ -1,10 +1,24 @@
 <template>
-  <div class="content-body">
-    content-body
-  </div>
+    <div class="content-body">
+        <template v-for="(message, index) in conversation.messages" :key="index">
+            <message-user v-if="message.sender === 'user'" :message="message"></message-user>
+            <message-robot v-else :message="message"></message-robot>
+        </template>
+    </div>
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import MessageUser from '@/components/chat-message/message-user.vue'
+import MessageRobot from '@/components/chat-message/message-robot.vue'
+
+import useConversationStore from '@/store/modules/Conversation'
+
+import Message from '@/classes/Message'
+
+const conversationStore = useConversationStore()
+const conversation  = computed(() => conversationStore.currentConversation)
+
 
 </script>
 
@@ -12,5 +26,25 @@
 .content-body {
     flex: 1 1 0;
     padding: 20px 20px 40px;
+    overflow: hidden auto;
+    overscroll-behavior: none;
+    position: relative;
+
+    &::-webkit-scrollbar {
+        --bar-width: 5px;
+        width: var(--bar-width);
+        height: var(--bar-width);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--bar-color);
+        border-radius: 20px;
+        background-clip: content-box;
+        border: 1px solid transparent;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
 }
 </style>

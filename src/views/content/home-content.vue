@@ -1,10 +1,10 @@
 <template>
-  <div class="content">
-    <content-header :title="conversation.title"
-                    :count="conversation.messages.length"/>
-    <content-body></content-body>
-    <content-tail></content-tail>
-  </div>
+    <div class="content">
+        <content-header :title="conversation.title"
+                        :count="conversation.messages.length"/>
+        <content-body />
+        <content-tail @sendMessage="sendMessageHandler" />
+    </div>
 </template>
 
 <script setup>
@@ -17,8 +17,17 @@ import ContentTail from './content-tail.vue'
 
 import useConversationStore from '@/store/modules/Conversation'
 
+import Message from '@/classes/Message'
+
 const conversationStore = useConversationStore()
-const conversation = computed(() => (conversationStore.currentConversation))
+const conversation  = computed(() => conversationStore.currentConversation)
+
+const sendMessageHandler = (content) => {
+    const userMessage = new Message({sender: "user", content, time: new Date()})
+    const robotMessage = new Message({sender: "robot", content: "听不懂思密达", time: new Date()})
+    conversationStore.addMessage(userMessage)
+    conversationStore.addMessage(robotMessage)
+}
 
 </script>
 

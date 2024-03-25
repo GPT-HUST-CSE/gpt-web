@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-
+import Message from '@/classes/Message'
 import Conversation from '@/classes/Conversation'
 
 const useConversationStore = defineStore("conversation", {
@@ -25,6 +25,10 @@ const useConversationStore = defineStore("conversation", {
             if (index !== -1) this.conversations.splice(index, 1)
             if (this.conversations.length === 0) this.addConversation({})
             if (id === this.currentIndex) this.currentIndex = this.conversations[0].id
+        },
+
+        addMessage(message: Message) {
+            this.conversations[this.currentIndex].addMessage(message)
         }
     }
 })

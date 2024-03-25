@@ -4,7 +4,7 @@ export default class Message {
     time: Date;
 
     // 构造函数
-    constructor(sender: string, content: string, time: Date) {
+    constructor({sender = "user", content = "请输入内容", time = new Date()} = {}) {
         this.sender = sender;
         this.content = content;
         this.time = time;

@@ -1,6 +1,8 @@
 import { defineStore } from "pinia";
 import Message from '@/classes/Message'
+import GptRequestInfo from '@/classes/GptRequestInfo'
 import Conversation from '@/classes/Conversation'
+import { requestChat } from '@/services/gpt'
 
 const useConversationStore = defineStore("conversation", {
     state: () => ({
@@ -27,8 +29,34 @@ const useConversationStore = defineStore("conversation", {
             if (id === this.currentIndex) this.currentIndex = this.conversations[0].id
         },
 
-        addMessage(message: Message) {
-            this.conversations[this.currentIndex].addMessage(message)
+        async addMessage(message: Message) {
+            const currentIndex = this.currentIndex
+            this.conversations[currentIndex].addMessage(message)
+            const gptRequest = new GptRequestInfo({
+                messages: this.conversations[currentIndex].messages
+            })
+            requestChat(gptRequest)
+            .then(res => {
+                const response = new Message({
+                    ...res.data.choices[0].message,
+                    time: new Date()
+                })
+                this.conversations[currentIndex].addMessage(response)
+            })
+            .catch(err => {
+                console.log(err)
+                if(err?.name === "AxiosError") {
+                    if(err?.message.includes("timeout")) {
+                        const response = new Message({
+                            role: 'assistant',
+                            content: err.message,
+                            time: new Date()
+                        })
+                        this.conversations[currentIndex].addMessage(response)
+                    }
+                }
+            })
+            
         }
     }
 })

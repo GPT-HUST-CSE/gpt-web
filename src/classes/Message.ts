@@ -1,17 +1,17 @@
 export default class Message {
-    sender: string;
+    role: string;
     content: string;
     time: Date;
 
     // 构造函数
-    constructor({sender = "user", content = "请输入内容", time = new Date()} = {}) {
-        this.sender = sender;
+    constructor({role = "user", content = "你是谁", time = new Date()} = {}) {
+        this.role = role;
         this.content = content;
         this.time = time;
     }
 
     // 方法
     describe(): string {
-        return `${this.sender} is ${this.content} years old.`;
+        return `${this.role} is ${this.content} years old.`;
     }
 }

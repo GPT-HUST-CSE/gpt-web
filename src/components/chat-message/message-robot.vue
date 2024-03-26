@@ -25,7 +25,7 @@ import Message from '@/classes/Message'
 const props = defineProps({
     message: {
         type: Message,
-        default: new Message({content: "听不懂思密达", sender: "robot"})
+        default: new Message({content: "听不懂思密达", role: "robot"})
     },
     avatar: {
         type: String,

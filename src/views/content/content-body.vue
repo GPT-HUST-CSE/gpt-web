@@ -1,14 +1,14 @@
 <template>
-    <div class="content-body">
+    <div class="content-body" ref="contentBody">
         <template v-for="(message, index) in conversation.messages" :key="index">
-            <message-user v-if="message.sender === 'user'" :message="message"></message-user>
+            <message-user v-if="message.role === 'user'" :message="message"></message-user>
             <message-robot v-else :message="message"></message-robot>
         </template>
     </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import MessageUser from '@/components/chat-message/message-user.vue'
 import MessageRobot from '@/components/chat-message/message-robot.vue'
 
@@ -16,9 +16,22 @@ import useConversationStore from '@/store/modules/Conversation'
 
 import Message from '@/classes/Message'
 
+const contentBody = ref(null)
 const conversationStore = useConversationStore()
 const conversation  = computed(() => conversationStore.currentConversation)
+const conversationMessageLength  = computed(() => conversationStore.currentConversation.messages.length)
 
+const scrollToBottom = () => {
+    contentBody.value.scrollTop =  contentBody.value.scrollHeight - contentBody.value.clientHeight + 121
+    console.log("scrollToBottom", contentBody.value.scrollTop, contentBody.value.scrollHeight, contentBody.value.clientHeight)
+}
+
+watch(conversationMessageLength, (newValue, oldValue) => {
+    if(newValue > oldValue) {
+        console.log("conversationMessageLength", contentBody.value.scrollTop, contentBody.value.scrollHeight, contentBody.value.clientHeight)
+        setTimeout(scrollToBottom, 0.2)
+    }
+})
 
 </script>
 
@@ -29,6 +42,7 @@ const conversation  = computed(() => conversationStore.currentConversation)
     overflow: hidden auto;
     overscroll-behavior: none;
     position: relative;
+    scroll-behavior: smooth;
 
     &::-webkit-scrollbar {
         --bar-width: 5px;

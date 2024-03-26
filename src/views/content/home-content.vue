@@ -23,10 +23,8 @@ const conversationStore = useConversationStore()
 const conversation  = computed(() => conversationStore.currentConversation)
 
 const sendMessageHandler = (content) => {
-    const userMessage = new Message({sender: "user", content, time: new Date()})
-    const robotMessage = new Message({sender: "robot", content: "听不懂思密达", time: new Date()})
+    const userMessage = new Message({role: "user", content, time: new Date()})
     conversationStore.addMessage(userMessage)
-    conversationStore.addMessage(robotMessage)
 }
 
 </script>

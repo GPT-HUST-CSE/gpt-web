@@ -4,7 +4,7 @@
             <img src="@/assets/image/setting.svg">
         </div> -->
         <div class="action button-icon">
-            <a href="https://github.com/GPT-HUST-CSE" target="_blank">
+            <a href="https://gitee.com/dcx0001/gpt-web" target="_blank">
                 <img src="@/assets/image/github.svg">
             </a>
         </div>

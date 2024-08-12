@@ -8,6 +8,7 @@ h2,
 h3,
 h4,
 ul,
+ol,
 li {
     padding: 0;
     margin: 0;
@@ -17,8 +18,7 @@ body {
     background-color: var(--gray);
 }
 
-ul,
-li {
+ul, li {
     list-style: none;
 }
 

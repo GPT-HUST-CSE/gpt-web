@@ -18,7 +18,8 @@
     --window-content-width: calc(100% - var(--sidebar-width));
     --message-max-width: 80%;
     --full-height: 100%;
-    --sidebar-button-distance: 10px
+    --sidebar-button-distance: 10px;
+    --content-font-size: 15px
 }
 
 .button-icon {

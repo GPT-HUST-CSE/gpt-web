@@ -41,4 +41,3 @@ const addConversation = () => {
     }
 }
 </style>
-@/store/modules/Conversation

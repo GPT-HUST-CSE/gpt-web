@@ -10,8 +10,6 @@
 <script setup>
 import HomeContent from './content/home-content.vue'
 import HomeSidebar from './sidebar/home-sidebar.vue'
-
-
 </script>
 
 <style lang="less" scoped>

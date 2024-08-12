@@ -7,9 +7,9 @@
             </div>
         </div>
         <div class="item">
-            <div class="markdown-body">
-                {{ content }}
-            </div>
+            <div class="markdown-body" @click="handleCopyCode" v-html="renderText(content)" />
+                <!-- {{ content }} -->
+            <!-- </div> -->
         </div>
         <div class="time">{{ time }}</div>
     </div>
@@ -18,7 +18,8 @@
 
 <script setup>
 import { computed } from 'vue'
-
+import { ElMessage } from 'element-plus'
+import { renderText } from '@/utils/markdown';
 import { formatMonthDay } from '@/utils/format_date'
 import Message from '@/classes/Message'
 
@@ -32,6 +33,19 @@ const props = defineProps({
         default: "/img/icons/chatgpt.svg"
     }
 })
+
+const handleCopyCode = (e) => {
+    const tagName = e.target.tagName
+    let target = e.target
+    if(!(tagName === 'BUTTON' || tagName === 'svg')) return
+    if(tagName === 'svg') target = target.parentElement
+    const content = target?.parentElement?.parentElement?.parentElement?.querySelector('code')?.innerText || ''
+    navigator.clipboard.writeText(content)
+    ElMessage({
+        message: '复制成功',
+        type: 'success',
+    })
+}
 
 const content = computed(() => props.message.content)
 const time = computed(() => formatMonthDay(props.message.time, "YYYY/MM/DD hh:mm:ss"))

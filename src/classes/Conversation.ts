@@ -5,6 +5,7 @@ export default class Conversation {
     title: string;
     time: Date;
     prompt: string;
+    generating: boolean = false
     messages: Message[] = []
 
 
@@ -21,5 +22,9 @@ export default class Conversation {
 
     addMessage(msg: Message) {
         this.messages.push(msg)
+    }
+
+    lastMessage() {
+        return this.getMessageLength() > 0?this.messages[this.getMessageLength() - 1] : new Message()
     }
 }

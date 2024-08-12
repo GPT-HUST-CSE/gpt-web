@@ -1,8 +1,8 @@
 <template>
     <div class="actions">
-        <div class="action button-icon">
+        <!-- <div class="action button-icon">
             <img src="@/assets/image/setting.svg">
-        </div>
+        </div> -->
         <div class="action button-icon">
             <a href="https://github.com/GPT-HUST-CSE" target="_blank">
                 <img src="@/assets/image/github.svg">

@@ -1,19 +1,9 @@
 # gpt
 
-## Project setup
-```
-npm install
-```
+* 基于 *Vue3* 开发的 *ChatGPT* 网页版
+* 支持自定义api地址，选择 *GPT-4* 或者其他模型
+* 使用 *markdown-it* 渲染界面
+* 流式渲染用户对话
+* 支持图片上传、图片懒加载
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![界面](./public/img/页面.png)

@@ -1,5 +1,5 @@
 import GptRequestInfo from '@/classes/GptRequestInfo'
-// import { DEFAULT_HOST, DEFAULT_Authorization, API2D_HOST, Authorization } from '@/constants/index'
+import { DEFAULT_HOST, DEFAULT_Authorization, API2D_HOST, Authorization } from '@/constants/index'
 import { createParser } from 'eventsource-parser';
 import { arrayBufferToBase64, getBase64ImageFromFile } from '@/utils/imagebase64';
 
@@ -19,8 +19,9 @@ const loadingImages = new Set()
 
 export const getFileContentAsBase64 = async (fileId: string) => {
     const host = chatSettingStore.cur_api
-    const api_key = chatSettingStore.key
+    // const api_key = chatSettingStore.key
     // const apiUrl = `${DEFAULT_HOST}/v1/files/${fileId}/content`;
+    const api_key = chatSettingStore.key
     const apiUrl = `${host}/v1/files/${fileId}/content`;
     if(loadingImages.has(fileId)) {
         const res_base64 = await new Promise((resolve, reject) => {
@@ -56,7 +57,6 @@ export const getFileContentAsBase64 = async (fileId: string) => {
     if (!response.ok) {
         throw new Error(`Error fetching file content: ${response.status}`);
     }
-    
     const arrayBuffer = await response.arrayBuffer();
     const base64String = await arrayBufferToBase64(arrayBuffer);
     loadingImages.delete(fileId)
